@@ -1,0 +1,288 @@
+/* =============================================================================
+   Cavanagh Family for Unraid Themer — v2.0.1
+
+   Built for https://github.com/benjaminmue/unraid-themer and Unraid 7.
+   The palette and artwork treatment are adapted from the authoritative
+   Cavanagh Family Authentik theme 3.9.
+   ============================================================================= */
+
+:root {
+  /* Established Cavanagh palette */
+  --cavanagh-red: #8f171b;
+  --cavanagh-red-hover: #741216;
+  --cavanagh-oxblood: #4a0c10;
+  --cavanagh-gold: #c69a45;
+  --cavanagh-gold-text: #d9b66e;
+  --cavanagh-gold-hover: #f0d79d;
+  --cavanagh-ivory: #f5efe3;
+  --cavanagh-charcoal: #151515;
+  --cavanagh-black: #0c0c0d;
+  --cavanagh-panel: #211f1e;
+  --cavanagh-muted: #c9c1b3;
+  --cavanagh-line: rgba(198, 154, 69, .32);
+  --cavanagh-motto: "Síocháin agus Fairsinge";
+
+  /* Unraid Themer palette */
+  --t-bg: #0c0c0d;
+  --t-bg2: #151515;
+  --t-surface: #211f1e;
+  --t-text: #f5efe3;
+  --t-dim: #c9c1b3;
+  --t-border: #4a0c10;
+  --t-accent: #c69a45;
+  --t-accent2: #8f171b;
+
+  /* Dynamix core */
+  --text-color: var(--t-text);
+  --alt-text-color: var(--t-dim);
+  --link-text-color: var(--cavanagh-gold-text);
+  --background-color: var(--t-bg);
+  --mild-background-color: var(--t-bg2);
+  --border-color: rgba(198, 154, 69, .30);
+  --input-border-color: rgba(198, 154, 69, .42);
+  --table-border-color: rgba(198, 154, 69, .24);
+  --table-background-color: var(--t-bg2);
+  --table-header-background-color: #191716;
+  --hover-table-row-background-color: rgba(198, 154, 69, .065);
+  --hr-color: rgba(198, 154, 69, .30);
+  --shade-bg-color: var(--t-surface);
+  --focus-input-bg-color: #171616;
+  --header-background-color: var(--t-surface);
+  --header-text-color: var(--t-text);
+  --header-text-primary: var(--t-text);
+  --header-text-secondary: var(--t-dim);
+  --title-header-background-color: var(--t-bg2);
+  --footer-text: var(--t-dim);
+  --footer-background-color: #111111;
+  --usage-bar-background-color: rgba(255, 255, 255, .12);
+  --usage-bar-used-background-color: var(--cavanagh-gold);
+  --usage-disk-background-color: rgba(255, 255, 255, .12);
+  --button-text-color: #fffaf1;
+  --button-background: var(--cavanagh-red);
+  --button-border: 1px solid #6f1115;
+  --scrollbar-color: rgba(198, 154, 69, .34);
+  --scrollbar-hover-color: var(--cavanagh-gold);
+  --small-shadow: 0 .75rem 2rem rgba(0, 0, 0, .30);
+  --dashboard-icon-color: var(--cavanagh-gold-text);
+
+  /* Remap Unraid brand tokens without changing semantic health/status colours */
+  --orange-500: var(--cavanagh-gold);
+  --orange-800: var(--cavanagh-red);
+  --brand-orange: var(--cavanagh-gold);
+  --brand-red: var(--cavanagh-red);
+  --blue-700: var(--cavanagh-gold);
+  --blue-800: var(--cavanagh-gold-text);
+
+  /* Unraid 7 UUI / shadcn component tokens */
+  --ui-bg: var(--t-bg);
+  --ui-bg-muted: var(--t-bg2);
+  --ui-bg-elevated: var(--t-surface);
+  --ui-bg-accented: var(--t-surface);
+  --ui-text: var(--t-text);
+  --ui-text-muted: var(--t-dim);
+  --ui-text-dimmed: var(--t-dim);
+  --ui-text-highlighted: var(--t-text);
+  --ui-border: rgba(198, 154, 69, .30);
+  --ui-primary: var(--cavanagh-gold);
+  --primary: var(--cavanagh-gold);
+  --background: var(--t-bg);
+  --foreground: var(--t-text);
+  --card: var(--t-bg2);
+  --popover: var(--t-bg2);
+  --border: rgba(198, 154, 69, .30);
+  --ring: var(--cavanagh-gold);
+  --accent: var(--cavanagh-red);
+
+  accent-color: var(--cavanagh-gold);
+  color-scheme: dark;
+}
+
+html { background-color: var(--cavanagh-black) !important; }
+
+body {
+  color: var(--cavanagh-ivory);
+  background-color: transparent !important;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+a { color: var(--cavanagh-gold-text); }
+a:hover { color: var(--cavanagh-gold-hover); }
+
+:focus-visible {
+  outline: 3px solid var(--cavanagh-gold) !important;
+  outline-offset: 2px;
+}
+
+/* Restrained heraldic shell and gold-line treatment */
+#header,
+header.header,
+.header {
+  background: linear-gradient(90deg, #111111, #1c1817 60%, #241516) !important;
+  border-bottom: 1px solid rgba(198, 154, 69, .32) !important;
+}
+
+#header::after,
+header.header::after {
+  content: "";
+  display: block;
+  width: min(28rem, 48vw);
+  height: 2px;
+  margin-inline: auto;
+  background: linear-gradient(90deg, transparent, var(--cavanagh-gold), transparent);
+}
+
+/* Make the 7:1 crest, wordmark, gold line and motto legible in the header. */
+html body img[src*="UN-logotype"],
+html body img[alt="Unraid Logo"] {
+  width: auto !important;
+  height: 3rem !important;
+  max-width: min(20rem, 34vw) !important;
+  object-fit: contain !important;
+  object-position: left center !important;
+}
+
+#menu .nav-item a { color: #c9c1b3 !important; }
+#menu .nav-item a:hover,
+#menu .nav-item.active a { color: var(--cavanagh-ivory) !important; }
+#menu .nav-item.active::after { background: var(--cavanagh-gold) !important; }
+
+h1, h2, h3,
+.title,
+.panel-header {
+  color: var(--cavanagh-ivory) !important;
+  font-family: Georgia, "Times New Roman", serif;
+  letter-spacing: .015em;
+}
+
+div.title { border-left: 3px solid var(--cavanagh-gold); }
+
+.panel,
+.card,
+.tile,
+fieldset,
+.ui-dialog {
+  border-color: rgba(198, 154, 69, .30) !important;
+  box-shadow: var(--small-shadow);
+}
+
+th {
+  color: var(--cavanagh-gold-text) !important;
+  border-color: rgba(198, 154, 69, .30) !important;
+}
+td { border-color: rgba(198, 154, 69, .16) !important; }
+
+input:not([type="checkbox"]):not([type="radio"]),
+select,
+textarea {
+  color: var(--cavanagh-ivory) !important;
+  border-color: rgba(198, 154, 69, .42) !important;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--cavanagh-gold) !important;
+  box-shadow: 0 0 0 .18rem rgba(198, 154, 69, .22) !important;
+}
+
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+button,
+.button:not(.apps):not(.vms):not(.compose-stacks) {
+  color: var(--button-text-color) !important;
+  background: linear-gradient(180deg, #a81e24 0%, var(--cavanagh-red) 55%, #731116 100%) !important;
+  border: var(--button-border) !important;
+  border-radius: .35rem !important;
+  box-shadow: 0 0 0 1px rgba(198, 154, 69, .35), 0 .2rem .55rem rgba(0, 0, 0, .16) !important;
+}
+
+input[type="button"]:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+button:hover,
+.button:not(.apps):not(.vms):not(.compose-stacks):hover {
+  background: var(--cavanagh-red-hover) !important;
+}
+
+a.blue-text,
+.blue-text { color: var(--cavanagh-gold-text) !important; }
+#docker_view .blue-text { color: var(--cavanagh-red) !important; }
+.greenbar { background: var(--usage-bar-used-background-color) !important; }
+.redbar { background: var(--cavanagh-red) !important; }
+
+/* Reveal the Themer background in the gaps between dashboard tiles. Unraid
+   inserts these spacer rows and otherwise paints them with --background-color. */
+table.dashboard thead.stopgap,
+table.dashboard thead.stopgap tr,
+table.dashboard td.stopgap {
+  background: transparent !important;
+  border: 0 !important;
+}
+
+#footer,
+footer,
+.status-bar {
+  color: #c9c1b3 !important;
+  border-top: 1px solid rgba(198, 154, 69, .30) !important;
+}
+
+/* Login treatment. The logo is the copy cached by Unraid Themer after Apply. */
+body:has(input[placeholder="Username"]):has(input[placeholder="Password"]) h1::before {
+  content: "";
+  display: block;
+  width: min(430px, 100%);
+  aspect-ratio: 7 / 1;
+  margin: 0 0 1.35rem;
+  background: url("/plugins/unraid.themer/logo/logo.svg") left center / contain no-repeat;
+}
+
+body:has(input[placeholder="Username"]):has(input[placeholder="Password"]) form,
+body:has(input[placeholder="Username"]):has(input[placeholder="Password"]) main > div,
+body:has(input[placeholder="Username"]):has(input[placeholder="Password"]) [class*="login"] {
+  border-color: rgba(198, 154, 69, .32) !important;
+}
+
+@media (max-width: 700px) {
+  html body img[src*="UN-logotype"],
+  html body img[alt="Unraid Logo"] {
+    height: 2.55rem !important;
+    max-width: min(17rem, 58vw) !important;
+  }
+
+  body:has(input[placeholder="Username"]):has(input[placeholder="Password"]) h1::before {
+    width: min(340px, 100%);
+  }
+}
+
+/* Tables and Community Apps compatibility */
+:root {
+  --dynamix-tablesorter-tbody-row-bg-color: var(--table-background-color);
+  --dynamix-tablesorter-tbody-row-alt-bg-color: var(--mild-background-color);
+  --dynamix-tablesorter-tbody-row-border-color: var(--border-color);
+  --dynamix-tablesorter-thead-th-bg-color: var(--table-header-background-color);
+  --dynamix-tablesorter-thead-th-text-color: var(--text-color);
+  --dynamix-tablesorter-thead-row-border-color: var(--border-color);
+  --dynamix-select-bg-color: var(--table-background-color);
+  --dynamix-box-text-color: var(--text-color);
+  --template-background: var(--mild-background-color) !important;
+  --template-hover-background: var(--shade-bg-color) !important;
+  --ca-legacy-background-color: var(--background-color) !important;
+  --sidebar-background: var(--mild-background-color) !important;
+  --support-popup-background: var(--mild-background-color) !important;
+  --ca-light-bg-color: var(--mild-background-color) !important;
+  --ca-dark-text-color: var(--text-color) !important;
+  --ca-medium-text-color: var(--alt-text-color) !important;
+  --ca-light-text-color: var(--text-color) !important;
+  --ca-lighter-text-color: var(--text-color) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+/*! themer-base: black */
